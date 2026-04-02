@@ -1,0 +1,25 @@
+# Java
+target/
+*.class
+*.jar
+*.war
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Node (por si usas algo auxiliar)
+node_modules/
+
+# Env
+.env
+
+# Docker
+*.pid
