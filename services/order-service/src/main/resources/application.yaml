@@ -1,3 +1,18 @@
+server:
+  servlet:
+    context-path: /order-service
+  port: 8085
+
 spring:
   application:
     name: order-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/edpp
+    username: edpp
+    password: edpp
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
