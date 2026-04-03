@@ -1,0 +1,14 @@
+{
+  "type": "record",
+  "name": "OrderCreated",
+  "namespace": "com.zago.edpp.events",
+  "fields": [
+    {"name": "eventId", "type": "string"},
+    {"name": "eventType", "type": "string"},
+    {"name": "eventVersion", "type": "string"},
+    {"name": "occurredAt", "type": "long"},
+    {"name": "orderId", "type": "string"},
+    {"name": "userId", "type": "string"},
+    {"name": "amount", "type": "double"}
+  ]
+}
