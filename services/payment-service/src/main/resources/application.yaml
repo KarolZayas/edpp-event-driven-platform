@@ -1,0 +1,47 @@
+server:
+  servlet:
+    context-path: /payment-service
+  port: 8085
+
+spring:
+  application:
+    name: payment-service
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: payment-group
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+
+      //key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      //value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+
+        schema.registry.url: http://localhost:8081
+        specific.avro.reader: true
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+      properties:
+        schema.registry.url: http://localhost:8081
+
+    listener:
+      ack-mode: manual
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/edpp
+    username: edpp
+    password: edpp
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
