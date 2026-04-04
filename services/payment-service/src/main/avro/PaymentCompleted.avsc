@@ -1,0 +1,77 @@
+{
+  "type": "record",
+  "name": "PaymentCompleted",
+  "namespace": "com.zago.edpp.events",
+  "doc": "Event emitted when a payment is successfully processed",
+
+  "fields": [
+    {
+      "name": "eventId",
+      "type": "string",
+      "doc": "Unique identifier for the event"
+    },
+    {
+      "name": "eventType",
+      "type": "string",
+      "default": "PaymentCompleted"
+    },
+    {
+      "name": "eventVersion",
+      "type": "string",
+      "default": "v1"
+    },
+    {
+      "name": "occurredAt",
+      "type": "long",
+      "doc": "Epoch millis when the event occurred"
+    },
+
+    {
+      "name": "orderId",
+      "type": "string"
+    },
+    {
+      "name": "userId",
+      "type": "string"
+    },
+    {
+      "name": "amount",
+      "type": "double"
+    },
+
+    {
+      "name": "currency",
+      "type": "string",
+      "default": "MXN"
+    },
+
+    {
+      "name": "status",
+      "type": {
+        "type": "enum",
+        "name": "PaymentStatus",
+        "symbols": ["SUCCESS", "FAILED"]
+      }
+    },
+
+    {
+      "name": "paymentMethod",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Optional payment method (CARD, SPEI, etc.)"
+    },
+
+    {
+      "name": "metadata",
+      "type": [
+        "null",
+        {
+          "type": "map",
+          "values": "string"
+        }
+      ],
+      "default": null,
+      "doc": "Optional metadata for extensibility"
+    }
+  ]
+}
